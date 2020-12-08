@@ -1,0 +1,2 @@
+# Ignore goland IDE jetbrains .idea setup files
+.idea
