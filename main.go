@@ -5,6 +5,7 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"os"
 	"strconv"
 
 	"github.com/gorilla/mux"
@@ -93,6 +94,9 @@ func deleteBooks(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	//Init port
+	port := os.Getenv("PORT")
+
 	//Init router
 	r := mux.NewRouter()
 
@@ -110,5 +114,5 @@ func main() {
 	// Using cors library to enable access control allow headers
 	handler := cors.Default().Handler(r)
 
-	log.Fatal(http.ListenAndServe(":8081", handler))
+	log.Fatal(http.ListenAndServe(":"+port, handler))
 }
